@@ -51,7 +51,6 @@ function getWeatherData(city) {
 
 // Display current weather information
 function displayWeather(data) {
-    // Display current weather information
     weatherInfo.innerHTML = `
         <h2>${data.name}</h2>
         <p>Temperature: ${data.main.temp}°C</p>
@@ -60,7 +59,6 @@ function displayWeather(data) {
     `;
 }
 
-// Display 5-day forecast with icons
 function displayForecast(data) {
     forecast.innerHTML = '';
     for (let i = 0; i < data.list.length; i += 8) {

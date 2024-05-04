@@ -4,5 +4,19 @@
     padding: 20px;
     text-align: center;
 }
+#weatherInfo {
+    display: flex;
+    justify-content: space-around; /* Adjust as needed */
+}
 
+#forecast {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Adjust column width as needed */
+    gap: 10px; /* Adjust gap between forecast items */
+}
+
+#forecast div {
+    border: 1px solid #ccc;
+    padding: 10px;
+}
 /* Add more CSS styling as needed */
