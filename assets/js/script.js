@@ -4,7 +4,7 @@ const cityInput = document.getElementById('cityInput');
 const weatherInfo = document.getElementById('weatherInfo');
 const forecast = document.getElementById('forecast');
 const searchHistory = document.getElementById('searchHistory');
-let cityHistory = []; // Array to store searched cities
+let cityHistory = JSON.parse(localStorage.getItem('cityHistory')) || []; // Retrieve city history from local storage
 
 // Event listener for form submission
 searchForm.addEventListener('submit', (e) => {
@@ -12,6 +12,7 @@ searchForm.addEventListener('submit', (e) => {
     const city = cityInput.value;
     getWeatherData(city);
     cityHistory.push(city); // Add the searched city to the history
+    localStorage.setItem('cityHistory', JSON.stringify(cityHistory)); // Save updated city history to local storage
     cityInput.value = '';
     displaySearchHistory();
 });
@@ -76,3 +77,6 @@ function displayForecast(data) {
         `;
     }
 }
+
+// Populate search history on page load
+displaySearchHistory();
