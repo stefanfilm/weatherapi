@@ -24,9 +24,23 @@ function displaySearchHistory() {
         const cityElement = document.createElement('div');
         cityElement.textContent = city;
         cityElement.classList.add('searched-city');
+
+        // Create a button icon for deleting the city
+        const deleteButton = document.createElement('button');
+        deleteButton.textContent = '❌'; // You can use any icon or text for the button
+        deleteButton.addEventListener('click', () => {
+            // Implement logic to delete the city from local storage and remove the city from the UI
+            cityHistory = cityHistory.filter(item => item !== city);
+            localStorage.setItem('cityHistory', JSON.stringify(cityHistory));
+            displaySearchHistory();
+        });
+
+        cityElement.appendChild(deleteButton);
+
         cityElement.addEventListener('click', () => {
             getWeatherData(city);
         });
+
         searchHistory.appendChild(cityElement);
     });
 }
